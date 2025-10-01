@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap");
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@import "../../vendor/wireui/wireui/ts/global.css";
+@source '../../vendor/wireui/wireui';
+@import "../../vendor/livewire/flux/dist/flux.css";
+
+@source '../views';
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../vendor/livewire/flux-pro/stubs/**/*.blade.php';
+@source '../../vendor/livewire/flux/stubs/**/*.blade.php';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+[x-cloak] {
+    display: none !important;
+}
+
+@theme {
+    --font-sans: "Onest", sans-serif;
+
+    --color-zinc-800: hsl(236, 16%, 20%);
+    --color-zinc-900: hsl(240 17% 15.3%);
+    --color-zinc-950: hsl(240, 17%, 11%);
+
+    --color-accent: #ff4e08;
+    --color-accent-content: #ff4e08;
+    --color-accent-foreground: #fff;
+    --primary: #ffffff;
+
+    --color-admin-background: #272d3f;
+    --color-admin-700: #272d3f;
+    --color-admin-800: #272d3f;
+    --color-admin-900: #272d3f;
+    --color-admin-950: #272d3f;
+    --color-admin-primary: #ff4e08;
+    --color-admin-content: #ff5b1f;
+}
+
+@layer theme {
+    .dark {
+        --color-white: #ffffff;
+        --color-zinc-50: #d4d4d4;
+        --color-zinc-100: #bdbfd1;
+        --color-zinc-200: #bdbfd1;
+        --color-zinc-300: #e0e1e9;
+        --color-zinc-400: #bdbfd1;
+        --color-zinc-500: #2a2c2b;
+        --color-zinc-600: #323633;
+        --color-zinc-700: #2a2c2b;
+        --color-zinc-800: #111;
+        --color-zinc-900: #222;
+        --color-zinc-950: #191919;
+
+        --color-accent: #ff4e08;
+        --color-accent-content: #ff5b1f;
+        --color-accent-foreground: #ffffff;
+        --color-background-dark: #222 !important;
+        --color-secondary-400: #bdbfd1 !important;
+        --color-secondary-500: #222 !important;
+        --color-secondary-600: #222 !important;
+        --color-secondary-700: #222 !important;
+        --color-secondary-800: #222 !important;
+        --color-secondary-900: #222 !important;
+        --color-secondary-950: #222 !important;
+        --color-gray-300: #2a2c2b !important;
+        --color-primary-600: hsla(17 100% 55% / 0.2);
+        --secundary: #323242;
+    }
+}
+
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border-color: var(--color-zinc-200, currentColor);
+    }
+
+    html,
+    body {
+    }
+}
+
+[data-flux-field]:not(ui-radio, ui-checkbox) {
+    @apply grid gap-2;
+}
+
+[data-flux-label] {
+    @apply !mb-0 !leading-tight;
+}
+
+input:focus[data-flux-control],
+textarea:focus[data-flux-control],
+select:focus[data-flux-control] {
+    @apply outline-hidden ring-2 ring-accent ring-offset-2 ring-offset-accent-foreground;
+}
+
+\[:where(&)\]:size-4 {
+    @apply size-4;
+}
+
+/* coloca no seu css/tailwind já suporta via classes */
+.overlay-hover {
+    @apply absolute inset-0 flex items-center justify-center bg-black/50 text-white
+           opacity-0 transition-opacity duration-300 ease-in-out;
+}
+.overlay-hover:hover {
+    @apply opacity-100;
+}
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
